@@ -10,6 +10,8 @@ namespace utils
     public abstract class invoBase
     {
 
+
+        public myId _id;
         public float _delay, _end;
         public int _repeatsLeft;
         public bool _infinite, _killMe;
@@ -18,12 +20,14 @@ namespace utils
         public abstract void invokeMe(invoBase _me);
 
 
-        public invoBase(float delay = 0, int repeats = 0, bool infinite = false)
+        public invoBase(float delay = 0, int repeats = 0, bool infinite = false , myId id = null)
         {
             _end = myTime.now + delay;
             _delay = delay;
             _repeatsLeft = repeats;
             _infinite = infinite;
+
+            _id = id;
 
             _infinite = repeats == -1 || infinite;
 

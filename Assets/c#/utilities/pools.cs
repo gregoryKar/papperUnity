@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -27,6 +28,55 @@ namespace utils
         }
 
 
+
+
+        #region  TRANSFORM POOL
+        foivosPool<Transform> transPool { get; set; } =
+              new()
+              {
+                  Instantiate = () =>
+                  {
+                      var t = new GameObject("Trans").transform;
+                      t.transform.parent = inst.transform;
+                      return t;
+                  },
+                  Initialize = t =>
+                  {
+                      // "GIVE TEXT IN POOL".logError();
+
+                      if (t.childCount > 0)
+                      {
+                          Debug.Log("IT HAS CHILDREN " + t);
+                      }
+
+                      //t.gameObject.SetActive(true);
+
+                      t.localScale = Vector3.one;
+                      t.eulerAngles = Vector3.zero;
+
+
+                  },
+                  Deactivate = t =>
+                  {
+                      t.name = "trans off";
+                      //"RETURN TEXT IN POOL".logError();
+                  },
+              };
+        public static Transform trans() =>
+             inst.transPool.Get();
+        public static Transform trans(Vector2 pos)
+        {
+            var t = inst.transPool.Get();
+            t.posSameZ(pos);
+            return t;
+        }
+
+
+        public static void returnMe(Transform t) =>
+            inst.transPool.Remove(t);
+
+
+        #endregion
 
 
 
@@ -117,6 +167,8 @@ namespace utils
                   {
                       //"RETURN TEXT IN POOL".logError();
                       s.enabled = false;
+                      s.name = "rend off";
+                      s.transform.parent = inst.transform;
                   },
               };
         public static SpriteRenderer sprite()

@@ -1,0 +1,13 @@
+
+
+
+# BODY PARTS
+- enemy going to the direction of holding the body parts and 
+- -  them seperately holding the attributs will see how ti goes
+
+# BODY PARTS CLONING
+- need to add cloning functionality to the body part attibuts ass well ??
+
+# USING DATA vs CLONING CLAS
+- in enemy move you duplicate the motion class , in projectile you just use the data
+- - and have like the one changing variable ( speed ) in the projectile

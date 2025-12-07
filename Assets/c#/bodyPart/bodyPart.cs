@@ -1,11 +1,12 @@
 
 using UnityEngine;
+using utils;
 
 namespace paper
 {
 
 
-    public class bodyPart : MonoBehaviour
+    public class bodyPart : MonoBehaviour, IKillable
     {
 
         [SerializeReference]
@@ -17,10 +18,15 @@ namespace paper
             foreach (var attribute in _attributes)
             {
                 attribute.init(this, user);
-
-
             }
         }
+
+        public void kill()
+        {
+            foreach (var item in _attributes) { mainFunctions.kill(item); }
+
+        }
+
 
     }
 

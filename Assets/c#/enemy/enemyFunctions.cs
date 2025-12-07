@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using utils.math;
 
 namespace paper
 {
@@ -52,6 +53,8 @@ namespace paper
             }
         }
 
+        public bool inRange => _trans.x() < paperConstants._towerPos;
+        public bool isAlive => _health > 0;
 
     }
 }

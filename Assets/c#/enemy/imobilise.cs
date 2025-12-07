@@ -23,7 +23,7 @@ namespace paper
 
         public override void affect(enemy target)
         {
-            target._move._canMove = false;
+            target._motion._canMove = false;
         }
 
         public override void affectAffected(enemy user, enemyCondition preexistingGeneric)
@@ -31,7 +31,7 @@ namespace paper
 
             var preExisting = (imobilise)preexistingGeneric;
 
-            _inRange = user._move.isInRange(user);
+            _inRange = user.inRange;
 
             if (_tempId != null)
             {
@@ -52,7 +52,12 @@ namespace paper
         public override void remove(enemy target)
         {
             //throw new NotImplementedException();
-            target._move._canMove = true;
+            target._motion._canMove = true;
+        }
+
+        public override void proccess(enemy user, out bool killMe)
+        {
+            throw new NotImplementedException();
         }
     }
 

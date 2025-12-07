@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190316289bd3fda44a5baccebc015013, type: 3}
+  m_Name: projectileData
+  m_EditorClassIdentifier: 
+  _motion:
+    rid: 7569629708296650830
+  _col:
+    _trans: {fileID: 0}
+    _activeCollider: 1
+    _shape:
+      rid: 7569629727152406719
+  _sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  _size: 1
+  _resultArray:
+  - rid: 7569629708296650823
+  references:
+    version: 2
+    RefIds:
+    - rid: 7569629708296650823
+      type: {class: projectileAffectingResult, ns: paper.projectiles, asm: Assembly-CSharp}
+      data:
+        _affecting:
+          rid: 7569629708296650824
+    - rid: 7569629708296650824
+      type: {class: damageAffecting, ns: paper.affecting, asm: Assembly-CSharp}
+      data:
+        amount: 10
+    - rid: 7569629708296650830
+      type: {class: projectileMotion, ns: paper.motion, asm: Assembly-CSharp}
+      data:
+        _canMove: 0
+        _trans: {fileID: 0}
+        _StartSpeed: 4
+        _velocity: {x: 0, y: 0}
+        _drag: 0
+        _gravity: 0
+        _lookAtDirecion: 0
+        _dragAmount: 0
+        _gravityAmount: 0
+    - rid: 7569629727152406719
+      type: {class: circle, ns: utils, asm: Assembly-CSharp}
+      data:
+        _radious: 0.5

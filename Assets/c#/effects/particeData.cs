@@ -16,6 +16,7 @@ namespace paper.effects
         public float _delay;
         public Sprite _sprite;
         public float _size;
+   
         [SerializeReference]
         public graphicChange[] _changes;
         public void create(Vector2 there)

@@ -12,13 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f365ef78dc12c574083ff080e29a7ea8, type: 3}
   m_Name: enemyData
   m_EditorClassIdentifier: 
-  _move:
-    rid: 7569629682131009811
-  _sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  _preffab: {fileID: 8212818208196564186, guid: 0cbb08d800ef48d4aa261a8da121df85, type: 3}
+  _motion:
+    rid: 7569629708296650829
+  _Col:
+    _trans: {fileID: 0}
+    _activeCollider: 0
+    _shape:
+      rid: 7569629727152406731
+  _range: 1
+  _startHealth: 5
   references:
     version: 2
     RefIds:
-    - rid: 7569629682131009811
-      type: {class: walk, ns: paper, asm: Assembly-CSharp}
+    - rid: 7569629708296650829
+      type: {class: Walk, ns: paper.motion, asm: Assembly-CSharp}
       data:
-        _speed: -1
+        _canMove: 0
+        _trans: {fileID: 0}
+        _speed: 0
+    - rid: 7569629727152406731
+      type: {class: circle, ns: utils, asm: Assembly-CSharp}
+      data:
+        _radious: 0

@@ -2,6 +2,7 @@
 
 
 using System;
+using System.Xml.Serialization;
 using UnityEngine;
 
 namespace utils.math
@@ -12,6 +13,8 @@ namespace utils.math
     {
 
         // public static Vector3 pos(this SpriteRenderer rend) => rend.transform.position;
+
+
 
         public static void cloneTo(this SpriteRenderer clone, SpriteRenderer eidolo)
         {
@@ -59,6 +62,10 @@ namespace utils.math
 
         public static Vector2 right(this Transform trans, float x) => trans.vek2() + Vector2.right * x;
         public static Vector2 left(this Transform trans, float x) => trans.vek2() + Vector2.left * x;
+
+
+
+      
 
 
     }

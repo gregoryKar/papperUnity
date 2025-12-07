@@ -15,3 +15,17 @@ MonoBehaviour:
   _delay: 0.07
   _sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   _size: 2
+  _changes:
+  - rid: 7569629704487174214
+  - rid: 7569629704487174215
+  references:
+    version: 2
+    RefIds:
+    - rid: 7569629704487174214
+      type: {class: sizeAdd, ns: paper.effects, asm: Assembly-CSharp}
+      data:
+        _add: -0.2
+    - rid: 7569629704487174215
+      type: {class: sizeAdd, ns: paper.effects, asm: Assembly-CSharp}
+      data:
+        _add: -0.2

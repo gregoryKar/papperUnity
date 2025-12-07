@@ -62,10 +62,13 @@ namespace utils
                 if (myTime.passedGlobal(_invo._end)) { i--; continue; }
 
                 invoProccessed++;
-                if (_invo._killMe is false) _invo.invokeMe(_invo);
-                _invo.process();
+                if (_invo._killMe is false)
+                {
+                    _invo.invokeMe(_invo);
+                    _invo.process();
+                }
+                else invokes.RemoveAt(i);
 
-                if (_invo._killMe) invokes.RemoveAt(i);
                 i--;
 
 
@@ -99,7 +102,22 @@ namespace utils
         //public static void add(invoBase thisOne) => inst.addSorted(thisOne);
         public static void add(invoBase thisOne) => inst.invokes.Add(thisOne);
 
+        public static void killAll(myId id)
+        {
 
+
+            if (id == null) { Debug.LogError(" KILL NULL ID "); }
+            foreach (var item in inst.invokes)
+            {
+                if (item._id == null) continue;
+
+                if (item._id.Equals(id) is false) continue;
+
+                Debug.Log("KILLED ID " + item._id._id);
+                item._killMe = true;
+            }
+
+        }
 
 
         // void addSorted(invoBase thisOne)

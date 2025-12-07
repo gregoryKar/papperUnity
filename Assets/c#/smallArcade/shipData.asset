@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86da58de9a0e91045827c25c305c9e11, type: 3}
+  m_Name: shipData
+  m_EditorClassIdentifier: 
+  speedForce: 35
+  _turnForce: 6
+  _shipPhysics: {fileID: 11400000, guid: 62178a7ab173e68459012a4dcd566aaa, type: 2}
+  _shipHealth: 100
+  _bulletDamage: 10
+  _bulletSpeed: 10

@@ -1,6 +1,9 @@
 
+using paper.motion;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
+using utils.colliders;
 
 namespace paper
 {
@@ -10,9 +13,17 @@ namespace paper
     public class enemyData : ScriptableObject
     {
 
+
+        public GameObject _preffab;
+
         [SerializeReference]
-        public enemyMove _move;
-        public Sprite _sprite;
+        public motionBase _motion;
+        //[SerializeReference]
+        public myCollider _Col;
+        public float _range; // should be in data
+        public int _startHealth; // should be startHealth in data
+        //public Sprite _sprite;
+        //public float _size;
 
 
 
@@ -23,20 +34,12 @@ namespace paper
 
         public void create()
         {
-
-            var enm = new enemy(this);
-            // enm._move = (enemyMove)_move.clone();
-
-            if (_move is IneedClone clone)  enm._move = (enemyMove)clone.clone();
-            else enm._move = _move;
-
-            if (enm._move is IneedInit _init) _init.init();
+            enemy.create(this);
         }
-            
-        [Button]
-        public void editCrate()
-        {
 
+        [Button]
+        public void editCreate()
+        {
             if (Application.isPlaying is false) return;
             create();
 

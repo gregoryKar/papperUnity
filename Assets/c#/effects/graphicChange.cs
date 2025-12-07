@@ -6,6 +6,7 @@ using System;
 
 namespace paper.effects
 {
+    [Serializable]
     public abstract class graphicChange
     {
 
