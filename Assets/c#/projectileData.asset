@@ -40,13 +40,13 @@ MonoBehaviour:
       data:
         _canMove: 0
         _trans: {fileID: 0}
-        _StartSpeed: 4
+        _StartSpeed: 5
         _velocity: {x: 0, y: 0}
         _drag: 0
-        _gravity: 0
-        _lookAtDirecion: 0
+        _gravity: 1
+        _lookAtDirecion: 1
         _dragAmount: 0
-        _gravityAmount: 0
+        _gravityAmount: 5
     - rid: 7569629727152406719
       type: {class: circle, ns: utils, asm: Assembly-CSharp}
       data:

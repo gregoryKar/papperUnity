@@ -2,20 +2,22 @@
 
 
 using System;
+using UnityEngine;
 using utils;
 
 namespace paper.attacks
 {
 
 
-
+    [Serializable]
     public abstract class enemyAttack
     {
 
         public float _cooldown;
         public float _initDelay;
-        float _nextAtack;
-        public float _attacking;
+
+
+        [SerializeReference]
         public attackResult _result;
 
         public void beginAttack(enemy user)
@@ -23,7 +25,7 @@ namespace paper.attacks
 
             invo.simple(() =>
                         {
-                           execute(user);
+                            execute(user);
                         }, _initDelay);
 
         }

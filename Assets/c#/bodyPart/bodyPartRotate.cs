@@ -10,20 +10,20 @@ namespace paper
 {
 
     [Serializable]
-    public class bodyPartRotate : bodyPartAttribute, IHaveId
+    public class bodyPartRotate : partAttribute, IHaveId
     {
 
         public float _speed;
 
-        myId _id;
-        public myId getId() => _id;
+        simpleId _id;
+        public simpleId getId() => _id;
 
 
         public override void init(bodyPart part, enemy user)
         {
-            _id = new myId();
+            _id = new simpleId();
 
-            Debug.Log("INIT ROTATE" + _id._id);
+            //Debug.Log("INIT ROTATE" + _id._id);
 
 
             invo.infinite(() =>

@@ -20,9 +20,12 @@ namespace utils
         public abstract void invokeMe(invoBase _me);
 
 
-        public invoBase(float delay = 0, int repeats = 0, bool infinite = false , myId id = null)
+        public invoBase(float delay = 0, int repeats = 0, bool infinite = false, myId id = null, float startDelay = -1)
         {
-            _end = myTime.now + delay;
+            if (startDelay < 0) _end = myTime.now + delay;
+            else _end = myTime.now + startDelay;
+
+
             _delay = delay;
             _repeatsLeft = repeats;
             _infinite = infinite;
@@ -42,6 +45,8 @@ namespace utils
             else _end = myTime.now + _delay;
 
         }
+
+        public void setDelay(float delay) => _delay = delay;
 
     }
 }

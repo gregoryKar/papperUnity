@@ -11,7 +11,7 @@ namespace paper
 
         public static void kill(object item)
         {
-            if (item is IHaveId registered) invoManager.killAll(registered.getId());
+            if (item is IHaveId registered) registered.getId().killAll();
             if (item is IKillable kilo) kilo.kill();
 
         }

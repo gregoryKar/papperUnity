@@ -59,7 +59,7 @@ namespace utils
 
                 //if (myTime.passedGlobal(_invo._end) is false) break;
                 //if (Time.timeSinceLevelLoad < _invo._end) { i--; continue; }
-                if (myTime.passedGlobal(_invo._end)) { i--; continue; }
+                if (myTime.passed(_invo._end) is false) { i--; continue; }
 
                 invoProccessed++;
                 if (_invo._killMe is false)
@@ -104,16 +104,16 @@ namespace utils
 
         public static void killAll(myId id)
         {
+            //todo duplicate same frame killAll with same id check ..
 
-
-            if (id == null) { Debug.LogError(" KILL NULL ID "); }
+            //if (id == null) { Debug.LogError(" KILL NULL ID "); }
             foreach (var item in inst.invokes)
             {
                 if (item._id == null) continue;
 
                 if (item._id.Equals(id) is false) continue;
 
-                Debug.Log("KILLED ID " + item._id._id);
+                // Debug.Log("KILLED ID " + item._id._id);
                 item._killMe = true;
             }
 

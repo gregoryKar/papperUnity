@@ -5,6 +5,7 @@
 
 using Unity.Mathematics;
 using UnityEngine;
+using utils;
 using utils.math;
 
 namespace smallArcade
@@ -34,6 +35,7 @@ namespace smallArcade
             _shipCollider = GetComponent<Collider2D>();
 
             _health = _data._shipHealth;
+            _okToShoot  = new();
         }
         void Update()
         {
@@ -73,18 +75,39 @@ namespace smallArcade
 
 
         }
+
+        //[SerializeField] float lastShoot;
+        myTime _okToShoot ;//= new();
+
+        // public float shootAfter;//delete
+        // public float now;//delete
+        // public bool spaceDown;//delete
+
         void shoot()
         {
+
+
+
 
             Vector2 mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             myMath.LookAt2D_chatGtp(gun, mousePos);
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                arcadeManager.shoot(arcadeTarget.enemy, gun.position, gun.up, _data._bulletSpeed, _data._bulletDamage);
+            // spaceDown = Input.GetKey(KeyCode.Space);
+            // shootAfter = lastShoot + _data._shootCooldown;
+            // now = myTime.now;
 
-            }
+            if (Input.GetKey(KeyCode.Space) is false) return;
+
+            //if (lastShoot + _data._shootCooldown > myTime.now) return;
+
+            if (_okToShoot.passed() is false) return;
+            _okToShoot.setAfter(_data._shootCooldown);
+
+
+            //Debug.Log("dir "+gun.up + " n "+gun.up.normalized);
+            arcadeManager.shoot(arcadeTarget.enemy, gun.position, gun.up, _data._bulletSpeed, _data._bulletDamage);
+
 
         }
         int _health;

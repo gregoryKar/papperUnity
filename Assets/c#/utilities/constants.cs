@@ -25,6 +25,17 @@ namespace utils
         public static Sprite square => inst._square;
 
 
+        public enum pointSeperationMethod
+        {
+            edjesFullStep,
+            edjesHalfStep,
+            noEdjeStep
+        }
+
+        
+        
+        // example when from 0 to 1 ,   3 points =>
+        // 0,0.5,1  or 0.25 , 0.5 , 0.75  or the other with halfEdjeStep
 
     }
-}
+    }

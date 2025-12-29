@@ -19,6 +19,7 @@ namespace utils.math
         public static float abs(this float value) => Math.Abs(value);
         public static int abs(this int value) => Math.Abs(value);
 
+        public static int round(this float value) => Mathf.RoundToInt(value);
 
     }
 

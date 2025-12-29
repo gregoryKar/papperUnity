@@ -21,11 +21,14 @@ namespace utils
 
 
         public void setNow() => _time = now;
-        public void setNow(float after) => _time = now + after;
+        public void setAfter(float after) => _time = now + after;
 
 
-        public bool passed(float time) => time > now;
-        public static bool passedGlobal(float time) => time > now;
+        //public bool passed(float time) => _time + time > now;
+        public bool passed() => _time < now;
+
+        public static bool passed(float time) => time < now;
+      
 
 
         //public bool before(myTime other) => _time < other._time;

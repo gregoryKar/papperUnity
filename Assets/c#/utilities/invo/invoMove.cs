@@ -32,7 +32,7 @@ namespace utils
             _speed = speed;
             _duration = (_target - _startPos).magnitude / speed;
 
-            Debug.Log("DURATION =  : " + _duration);
+            //Debug.Log("DURATION =  : " + _duration);
 
             _onEnd = onEnd;
 
@@ -67,9 +67,25 @@ namespace utils
         }
 
 
-        public static void move(Transform trans, Vector2 target, float speed, Action onEnd) => new invoMove(trans, target, speed, onEnd);
-        public static void moveDuration(Transform trans, Vector2 target, float duration, Action onEnd) => new invoMove(trans, target,
-       (target - trans.vek2()).magnitude / duration, onEnd);
+        public static void move(Transform trans, Vector2 target, float speed, Action onEnd, bool local = false) => new invoMove(trans, target, speed, onEnd, local: local);
+        public static void moveDuration(Transform trans, Vector2 target, float duration, Action onEnd, bool local = false)
+        {
+            var move = new invoMove(trans, target,
+      -1, onEnd, local: local);
+
+            move._duration = duration;
+
+            if (local) move._speed = (target - trans.vek2Local()).magnitude / duration;
+            else move._speed = (target - trans.vek2()).magnitude / duration;
+            // (target - trans.vek2()).magnitude / duration
+
+        }
+
+
+
+
+
+
 
 
 

@@ -18,9 +18,9 @@ namespace paper
     public abstract class entity : MonoBehaviour, IHaveId, IKillable
     {
 
-        myId _id;
-        public myId getId() => _id;
-        public virtual void itinitialiseId() => _id = new myId();
+        simpleId _id;
+        public simpleId getId() => _id;
+        public virtual void itinitialiseId() => _id = new simpleId();
 
       
 

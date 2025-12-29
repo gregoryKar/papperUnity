@@ -2,6 +2,7 @@
 
 
 using System;
+using Sirenix.OdinInspector;
 using Unity.Mathematics;
 using UnityEngine;
 using utils;
@@ -11,10 +12,10 @@ namespace paper
 {
 
     [Serializable]
-    public class deathFly : bodyPartAttribute, partKillable
+    public class deathFly : partAttribute, partKillable
     {
-        public override void init(bodyPart part, enemy user) { }
-
+        public override void init(bodyPart part, enemy user) { _partHolder = part; }
+        bodyPart _partHolder;
 
 
         public float _speed;
@@ -27,14 +28,21 @@ namespace paper
         public void kill(bodyPart part, enemy user)
         {
 
-            Debug.Log("FLYYYYYYY");
+            fly();
+
+        }
+
+        [Button]
+        void fly()
+        {
+            //Debug.Log("FLYYYYYYY");
 
             var physics = physicsEntity.create();
-            physics.transform.position = part.transform.position;
-            physics.transform.eulerAngles = part.transform.eulerAngles;
+            physics.transform.position = _partHolder.transform.position;
+            physics.transform.eulerAngles = _partHolder.transform.eulerAngles;
             physics.transform.localScale = Vector3.one;
 
-            var rend = pools.clone(part.GetComponent<SpriteRenderer>());
+            var rend = pools.clone(_partHolder.GetComponent<SpriteRenderer>());
             rend.transform.parent = physics.transform;
             rend.transform.localPosition = Vector3.zero;
             rend.transform.localRotation = quaternion.identity;
@@ -82,9 +90,7 @@ namespace paper
             physics._collision += flashIt;
             physics._imobilised += fadeIt;
 
-
         }
-
 
 
 

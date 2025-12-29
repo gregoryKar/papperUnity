@@ -18,3 +18,4 @@ MonoBehaviour:
   _shipHealth: 100
   _bulletDamage: 10
   _bulletSpeed: 10
+  _shootCooldown: 0

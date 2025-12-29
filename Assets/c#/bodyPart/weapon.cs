@@ -9,7 +9,7 @@ namespace paper
 {
 
     [Serializable]
-    public class weapon : bodyPartAttribute , ITrans
+    public class weapon : partAttribute , ITrans
     {
 
         Transform _trans;

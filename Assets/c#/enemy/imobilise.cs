@@ -15,10 +15,10 @@ namespace paper
 
 
         public bool _inRange;
-        List<myId> _imobilisers = new List<myId>();
-        myId _tempId;
+        List<simpleId> _imobilisers = new List<simpleId>();
+        simpleId _tempId;
 
-        public imobilise(myId imobiliser = null) { _tempId = imobiliser; }
+        public imobilise(simpleId imobiliser = null) { _tempId = imobiliser; }
 
 
         public override void affect(enemy target)
@@ -39,7 +39,7 @@ namespace paper
                 else preExisting._imobilisers.Add(_tempId);
             }
         }
-        public void removeImobiliser(myId imobiliser)
+        public void removeImobiliser(simpleId imobiliser)
         {
             _imobilisers.Remove(imobiliser);
         }

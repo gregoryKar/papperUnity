@@ -9,16 +9,22 @@ namespace paper
 {
 
     [Serializable]
-    public class bodyPartAnim : bodyPartAttribute
+    public class bodyPartAnim : partAttribute 
     {
 
         [SerializeReference] anim _anim;
+
+      
+
         public override void init(bodyPart part, enemy user)
         {
-            if (_anim is stepMove sm)
-            {
-                sm.play(part.transform);
-            }
+
+            _anim.loop(part, user.getId());
+
+            // if (_anim is stepMove sm)
+            // {
+            //     sm.play(part.transform);
+            // }
         }
 
     }

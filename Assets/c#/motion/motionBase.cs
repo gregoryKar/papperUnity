@@ -34,7 +34,7 @@ namespace paper.motion
         }
         public abstract motionBase createClone(Transform t);
 
-        [HideInInspector] public bool _canMove;
+        public bool _canMove;// [HideInInspector]
         [HideInInspector] public Transform _trans;
 
         public abstract void process(float delta);

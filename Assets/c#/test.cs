@@ -18,16 +18,17 @@ namespace paper
     {
 
 
-        static test instance;
+        public static test instance;
+
 
         private void Awake()
         {
             instance = this;
-            Debug.Log("test instance " + myTime.now);
+            //Debug.Log("test instance " + myTime.now);
         }
 
 
-        [SerializeReference] readonly List<enemy> _enemies = new();
+        [SerializeReference] public readonly List<enemy> _enemies = new();
         [SerializeReference] readonly List<Projectile> _projectiles = new();
         [SerializeReference] readonly List<motionBase> _motions = new();
 
@@ -69,19 +70,32 @@ namespace paper
 
             foreach (var motion in _motions)
             {
-                if (motion._canMove is false) continue;
+                if (motion._canMove != true) continue;
                 motion.process(delta);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))//! EDIR
+            {
+                foreach (var enm in _enemies)
+                {
+                    enm.invokeAttributeEvent(new testInputEvent() { _key = KeyCode.Space });
+                }
             }
 
             foreach (var enm in _enemies)
             {
-                if (enm._inRange) continue;
+                if (enm._inRangeBool) continue;
 
-                if (enm.inRange)
-                {
-                    //new enemyCondition here somehow
-                    enm._motion._canMove = false;
-                }
+                if (enm.inRange is false) continue;
+
+                //! FOR EDIT enm._trans.position += Vector3.right * 10;
+                //new enemyCondition here somehow
+                enm._inRangeBool = true;
+                enm._motion._canMove = false;
+                //Debug.LogError("I SET MOVE TO FALSE == "+  enm._motion._canMove);
+                enm._attack?.beginAttack(enm);
+                enm.invokeAttributeEvent(new rangeReachedEvent());
+
             }
 
 
@@ -92,11 +106,7 @@ namespace paper
 
 
 
-
     }
-
-
-
-
-
 }
+
+

@@ -59,11 +59,23 @@ namespace utils.colliders
         {
             var c = new myCollider(trans, owner);
             c._shape = _shape.cloneMe();
-            c._activeCollider =_activeCollider;
+            c._activeCollider = _activeCollider;
             return c;
         }
 
+        //! NEED ARISED FROM BACKROUND ITEM WHERE IT DOEST GET INITIATED OR SOMETHING
+        public void setTransAndOnwer(Transform trans, ICollider owner)
+        {
+            _trans = trans;
+            colliderManager.add(this);
+            //Debug.Log("ADDING COLLIDER");
 
+            if (owner != null)
+            {
+                _owner = owner;
+                _activeCollider = owner is IActiveCollider;
+            }
+        }
 
 
 

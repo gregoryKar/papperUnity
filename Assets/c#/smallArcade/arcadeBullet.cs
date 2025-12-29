@@ -28,12 +28,14 @@ namespace smallArcade
             position.z = _ZZZ;
 
             transform.position = position;
-            myMath.LookAt2D_chatGtp(transform, dir);
+           //yMath.LookAt2D_chatGtp(transform, dir);
+            myMath.LookAtDir2D_chatGtp(transform, dir);
+            //Debug.Log("rot = " + transform.eulerAngles);
 
             GetComponent<Rigidbody2D>().linearVelocity = dir * speed;
 
             arcadeManager.addBulletCollider(GetComponent<Collider2D>());
-            
+
 
 
         }

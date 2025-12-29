@@ -6,14 +6,19 @@ namespace paper
 {
 
 
-    public class bodyPart : MonoBehaviour, IKillable
+    public class bodyPart : MonoBehaviour, IKillable, ITrans
     {
 
         [SerializeReference]
-        public bodyPartAttribute[] _attributes;
+        public partAttribute[] _attributes;
+        enemy _user;
 
-        public void init(enemy user)
+        public Transform getTrans() => transform;
+
+
+        public virtual void init(enemy user)
         {
+            _user = user;
             user._parts.Add(this);
             foreach (var attribute in _attributes)
             {
@@ -23,10 +28,43 @@ namespace paper
 
         public void kill()
         {
-            foreach (var item in _attributes) { mainFunctions.kill(item); }
+            
+            foreach (var item in _attributes)
+            {
+                mainFunctions.kill(item);
+            }
+
+        }
+        public void killIndependant()
+        {
+
+            _user.removePart(this);
+            kill();
+            gameObject.SetActive(false);
+
 
         }
 
+
+
+        public void invokeEvent(enemy enm, enemyEventBase enmEvent)
+        {
+
+            foreach (var item in _attributes)
+            {
+                //Debug.LogError("death partEventListener in ALL attributs");
+                //Debug.Log(item.GetType());
+                if (item is partEventListener listener)
+                {
+                    //Debug.LogError("death partEventListener FOUND");
+                    //Debug.LogError("found listener");
+
+                    listener.invoke(this, enm, enmEvent);
+
+
+                }
+            }
+        }
 
     }
 

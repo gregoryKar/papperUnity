@@ -61,7 +61,7 @@ namespace paper.projectiles
         public override void kill()
         {
             //pools.returnMe(_trans);
-            invoManager.killAll(getId());
+            getId().killAll();
             pools.returnMe(_rend);
 
             _col.kill();

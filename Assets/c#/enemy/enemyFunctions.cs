@@ -12,11 +12,15 @@ namespace paper
 
 
 
-        public T getAttribute<T>() where T : bodyPartAttribute
+        public T getAttribute<T>() where T : partAttribute
         {
             foreach (var part in _parts)
             {
-                if (part is T tPart) return tPart;
+                foreach (var item in part._attributes)
+                {
+                    if (item is T tPart) return tPart;
+                }
+                //if (part is T tPart) return tPart;
             }
 
             return null;
@@ -55,6 +59,8 @@ namespace paper
 
         public bool inRange => _trans.x() < paperConstants._towerPos;
         public bool isAlive => _health > 0;
+
+        public int healthPercent => (100f * _health / _maxHealth).round();
 
     }
 }

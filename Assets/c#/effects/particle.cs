@@ -34,7 +34,7 @@ namespace paper.effects
         void change()
         {
 
-            _data._changes[counter].apply(this);
+           // _data._changes[counter].apply(this);
 
             counter++;
             if (counter < _data._changes.Length) invo.simple(change, _data._delay);
