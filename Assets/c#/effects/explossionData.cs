@@ -62,8 +62,8 @@ namespace paper.effects
                 var s = pools.sprite();
                 s.sprite = _triangleSprite;
                 Vector3 size = _size;
-                size.x += myMath.randomDirPercent(size.x, _sizeRandomAjdust);
-                size.y += myMath.randomDirPercent(size.y, _sizeRandomAjdust);
+                size.x += myRandom.dirPercent(size.x, _sizeRandomAjdust);
+                size.y += myRandom.dirPercent(size.y, _sizeRandomAjdust);
                 size += (Vector3)Vector2.one * _heightSizeMultiply * size.y;
                 size.z = 1;
                 s.transform.localScale = size;

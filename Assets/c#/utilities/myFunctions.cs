@@ -69,7 +69,7 @@ namespace utils
                 //float steps = values.Length + 1;
 
                 values[i] = startStep + i * step; /// steps;
-                values[i] += step * (myMath.randomDir(randomPercent) / 100f);
+                values[i] += step * (myRandom.dir(randomPercent) / 100f);
             }
 
             return values;
@@ -89,7 +89,7 @@ namespace utils
 
             void draw(int2 startPos, Vector2 dir)
             {
-                Vector3 tempStart = pos + new Vector3(startPos.x, startPos.y, 0) * size/2f;
+                Vector3 tempStart = pos + new Vector3(startPos.x, startPos.y, 0) * size / 2f;
                 Vector3 tempEnd = tempStart + (Vector3)dir * size;
                 Debug.DrawLine(tempStart, tempEnd, col, duration);
             }
@@ -101,9 +101,11 @@ namespace utils
 
         }
 
+        public static void drawCube(Transform trans, float size, Color col = default, float duration = -1) => drawCube(trans.position, size, col, duration);
+
+
+
+
+
     }
-
-
-
-
 }

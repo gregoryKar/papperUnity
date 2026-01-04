@@ -16,9 +16,8 @@ namespace utils.math
     public static class myMath
     {
 
-        // public static void posSameZ(this Transform trans, Vector2 pos) =>
-        //  trans.position = new Vector3(pos.x, pos.y, trans.position.z);
 
+     
 
 
         public static void LookAt2D_chatGtp(Transform t, Vector2 targetPos)
@@ -44,24 +43,12 @@ namespace utils.math
             trans.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
-        public static float random01() => UnityEngine.Random.value;
-        //UnityEngine.Random.Range (0f, 1f);
 
-        public static float randomDir(float value) => UnityEngine.Random.Range
-        (-value, value);
-        public static float randomDirPercent(float value, int percent) => UnityEngine.Random.Range(-value, value) * (percent / 100f);
-
-        public static int randomDir(int value) => UnityEngine.Random.Range
-      (-value, value);
-        public static int randomDirPercent(int value, int percent) => (UnityEngine.Random.Range
-        ((float)-value, value) * (percent / 100f)).round();
 
         public static Vector2 angleToVec(float angle)//! from autopilot
         {
             return new Vector2(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad));
         }
-
-        public static Vector2 randomDir() => angleToVec(random01() * 360f);
 
 
 

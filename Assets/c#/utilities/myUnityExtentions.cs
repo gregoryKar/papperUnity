@@ -15,25 +15,7 @@ namespace utils.math
         // public static Vector3 pos(this SpriteRenderer rend) => rend.transform.position;
 
 
-
-        public static void cloneTo(this SpriteRenderer clone, SpriteRenderer eidolo)
-        {
-            //var clone = inst.spritePool.Get();
-
-
-
-            clone.transform.position =
-            eidolo.transform.position;
-            clone.transform.localScale =
-           eidolo.transform.lossyScale;
-
-            clone.sprite = eidolo.sprite;
-            clone.color = eidolo.color;
-
-
-
-        }
-        public static void returnMe(this SpriteRenderer rend) { pools.returnMe(rend); }
+        #region TRANSFORM RELATED
 
         public static void rotateSet(this Transform trans, float rot)
         {
@@ -48,6 +30,11 @@ namespace utils.math
             trans.eulerAngles = holder;
         }
         public static float rotateGet(this Transform trans) => trans.eulerAngles.z;
+
+
+
+
+
 
         public static void posSameZ(this Transform trans, Vector2 pos, bool local = false)
         {
@@ -89,6 +76,32 @@ namespace utils.math
         public static Vector2 getDown(this Transform trans, float x) => trans.vek2() + Vector2.up * -x;
 
         public static Vector2 goUp(this Transform trans, float x) => trans.position += trans.up * x;
+
+
+
+        #endregion
+
+
+
+        public static void cloneTo(this SpriteRenderer clone, SpriteRenderer eidolo)
+        {
+            //var clone = inst.spritePool.Get();
+
+
+
+            clone.transform.position =
+            eidolo.transform.position;
+            clone.transform.localScale =
+           eidolo.transform.lossyScale;
+
+            clone.sprite = eidolo.sprite;
+            clone.color = eidolo.color;
+
+
+
+        }
+        public static void returnMe(this SpriteRenderer rend) { pools.returnMe(rend); }
+
 
 
 

@@ -68,18 +68,18 @@ namespace my3dtest
             if (rb == null) return;
 
             Vector3 forceTemp = Vector3.zero;
-            forceTemp.x = myMath.randomDirPercent(forceTemp.x, forceRandom);
-            forceTemp.y = myMath.randomDirPercent(forceTemp.y, forceRandom);
-            forceTemp.z = myMath.randomDirPercent(forceTemp.z, forceRandom);
+            forceTemp.x = myRandom.dirPercent(forceTemp.x, forceRandom);
+            forceTemp.y = myRandom.dirPercent(forceTemp.y, forceRandom);
+            forceTemp.z = myRandom.dirPercent(forceTemp.z, forceRandom);
 
             forceTemp.y += upForceBase;
 
             rb.AddForce(forceTemp);
 
             Vector3 torqueTemp = Vector3.zero;
-            torqueTemp.x = myMath.randomDirPercent(torque.x, torqueRandom);
-            torqueTemp.y = myMath.randomDirPercent(torque.y, torqueRandom);
-            torqueTemp.z = myMath.randomDirPercent(torque.z, torqueRandom);
+            torqueTemp.x = myRandom.dirPercent(torque.x, torqueRandom);
+            torqueTemp.y = myRandom.dirPercent(torque.y, torqueRandom);
+            torqueTemp.z = myRandom.dirPercent(torque.z, torqueRandom);
 
             rb.AddTorque(torqueTemp);
 

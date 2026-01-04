@@ -36,7 +36,7 @@ namespace paper
             _trans = part.transform;
             _startRot = _trans.eulerAngles.z;
 
-            _xSeed = myMath.random01() * 100f;
+            _xSeed = myRandom.value01() * 100f;
 
 
 

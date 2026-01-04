@@ -36,8 +36,8 @@ namespace paper
             _trans = part.transform;
             _startPos = _trans.localPosition;
 
-            _xSeed = myMath.random01() * 100f;
-            _ySeed = myMath.random01() * 100f;
+            _xSeed = myRandom.value01() * 100f;
+            _ySeed = myRandom.value01() * 100f;
 
 
 

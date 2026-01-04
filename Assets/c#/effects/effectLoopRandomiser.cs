@@ -42,8 +42,8 @@ namespace paper.effects
             }, 0);
         }
 
-        public float getCoodown() => _cooldown + myMath.randomDirPercent(_cooldown, _cooldownRandom);
-        public float getDuration() => _duration + myMath.randomDirPercent(_duration, _durationRandom);
+        public float getCoodown() => _cooldown + myRandom.dirPercent(_cooldown, _cooldownRandom);
+        public float getDuration() => _duration + myRandom.dirPercent(_duration, _durationRandom);
 
 
 

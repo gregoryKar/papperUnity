@@ -21,6 +21,7 @@ namespace paper
         public static test instance;
 
 
+
         private void Awake()
         {
             instance = this;
