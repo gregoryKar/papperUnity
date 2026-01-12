@@ -61,6 +61,12 @@ namespace utils.math
                 trans.position = new Vector3(x, y, trans.position.z);
         }
 
+
+        public static Vector2 Vec3D_2D(this Transform trans) =>
+             new Vector2(trans.position.x, trans.position.z);
+        public static Vector2 Vec3D_2D(this Vector3 vek) =>
+             new Vector2(vek.x, vek.z);
+
         public static Vector2 vek2(this Transform trans) => trans.position;
 
         public static Vector2 vek2Local(this Transform trans) => trans.localPosition;

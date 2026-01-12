@@ -1,5 +1,6 @@
 
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace my3dtest
@@ -8,6 +9,14 @@ namespace my3dtest
 
     public class my3DController : MonoBehaviour
     {
+
+        public static my3DController _inst;
+        void Awake()
+        {
+            _inst = this;
+        }
+
+
 
         [Header("Movement")]
         public float moveSpeed = 5f;
@@ -27,7 +36,9 @@ namespace my3dtest
             cameraTransform = Camera.main.transform;
             //controller = GetComponent<CharacterController>();
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            Cursor.visible = true;
+
+
 
             rb = GetComponent<Rigidbody>();
         }
@@ -84,7 +95,9 @@ namespace my3dtest
         public bool useRayStartOffset;
         public Vector3 rayStartOffset;
 
-        my3DPressMe highlightedItem;
+        [Space(10)]
+        [SerializeField] string _pointingAtName;
+        [SerializeReference] my3DInteractableBase highlightedItem;//my3DPressMe
         void lookUpdate()
         {
             Vector3 origin = lookTransformOrigin.position;
@@ -105,7 +118,7 @@ namespace my3dtest
 
             if (highlightedItem != null)
             {
-                highlightedItem.highlight = false;
+                highlightedItem.lookAway();
                 highlightedItem = null;
             }
 
@@ -116,12 +129,12 @@ namespace my3dtest
                     Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green);
                 }
 
+                _pointingAtName = hit.collider.gameObject.name;
 
-
-                if (hit.collider.TryGetComponent<my3DPressMe>(out var press))
+                if (hit.collider.TryGetComponent<my3DInteractableBase>(out var interactable))
                 {
-                    press.highlight = true;
-                    highlightedItem = press;
+                    interactable.lookAt();
+                    highlightedItem = interactable;
                 }
 
 
@@ -142,11 +155,15 @@ namespace my3dtest
 
         void pressUpdate()
         {
-            if (highlightedItem == null) return;
-            if (Input.GetKeyDown(KeyCode.Space) is false) return;
 
-            Debug.LogError(highlightedItem.name);
-            highlightedItem.pressMe();
+            if (highlightedItem == null) return;
+
+
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) highlightedItem.press();
+            else if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0)) highlightedItem.hold();
+
+            //Debug.LogError(highlightedItem.name);
+            //.pressMe();
 
 
         }

@@ -17,7 +17,9 @@ namespace utils.math
     {
 
 
-     
+        public static float Normalize(float value, float min, float max) =>
+             ((value - min) / (max - min)).clamp01();
+
 
 
         public static void LookAt2D_chatGtp(Transform t, Vector2 targetPos)
@@ -50,6 +52,11 @@ namespace utils.math
             return new Vector2(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad));
         }
 
+
+        // public static float angle(Vector2 a , Vector2 b)
+        // {
+        //     return Mathf.Atan2(b.y - a.y, b.x - a.x) * Mathf.Rad2Deg;
+        // { 
 
 
         /// <summary>
